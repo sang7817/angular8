@@ -1,0 +1,15 @@
+<section id="laptop" class="container-fluid pt-5 pb-5 bg-light text-dark">
+  <div class="container-fluid">
+    <h1 class="text-center">BEST LAPTOP</h1>
+    <div class="row">
+      <div
+        class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-lg-3"
+        *ngFor="let item of itemproduct"
+      >
+        <div class="card bg-light" style="width:300px">
+          <app-item [item]="item"></app-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
