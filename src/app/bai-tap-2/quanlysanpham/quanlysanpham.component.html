@@ -1,0 +1,53 @@
+<div class="mx-5 my-3">
+  <h1 class="mb-3">Bài tập Structural Directive - CYBERSOFT</h1>
+  <div>
+    <h5 class="bg-dark text-white p-3 m-0">Quản lý danh mục sản phẩm</h5>
+    <div class="form-inline px-5 py-4 border">
+      <div class="form-group">
+        <input type="text" class="form-control" #MaSp placeholder="Mã sản phẩm" >
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" #Name placeholder="Tên sản phẩm" >
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" #Price placeholder="Giá" >
+      </div>
+      <button class="btn btn-success" (click)="addProduct(MaSp.value,Name.value, Price.value )">Thêm sản phẩm </button>
+    </div>
+  </div>
+
+  <h5 class="bg-dark text-white p-3 mb-0 mt-5">Danh mục sản phẩm</h5>
+  <div class="px-3 border">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Mã sản phẩm</th>
+          <th scope="col">Tên sản phẩm</th>
+          <th scope="col">Giá</th>
+          <th scope="col"> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container  >
+          <tr  *ngFor="let item of listProduct | paginate : config ; let stt = index">
+            <td > {{item.masp}}</td>
+            <td>  {{item.name}}</td>
+            <td>  {{item.price}}</td>
+            <td class="text-right"><button class="btn btn-danger" (click)="deleteProduct(item.masp)" >Xóa</button></td>
+          </tr>
+        </ng-container>
+
+      </tbody>
+
+    </table>
+    <pagination-controls  id="dssp"
+    (pageChange)="onPageChange($event)"
+    maxSize="5"
+    autoHide="true"
+    responsive="true"
+    previousLabel="Previous"
+    nextLabel="Next"
+     >
+</pagination-controls>
+  </div>
+</div>
